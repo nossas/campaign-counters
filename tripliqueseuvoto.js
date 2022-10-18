@@ -1,5 +1,5 @@
-function startTimer(duration, display) {
-  let timer = duration, minutes, seconds;
+function startTimer(duration) {
+  let timer = duration
 
   function daysRemaining() {
     now = new Date(Date.now()).getDate();
@@ -19,28 +19,25 @@ function startTimer(duration, display) {
     return (60 - now);
   }
 
-  setInterval(function () {
-    let days = daysRemaining()
-    let hours = hoursRemaining()
-    let minutes = minutesRemaining()
+  let days = daysRemaining()
+  let hours = hoursRemaining()
+  let minutes = minutesRemaining()
 
-    hours = hours < 10 ? `0${hours}` : hours;
-    minutes = minutes < 10 ? `0${minutes}` : minutes;
+  hours = hours < 10 ? `0${hours}` : hours;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    display.textContent = `FALTAM ${days} DIAS, ${hours} HORAS E ${minutes} MINUTOS PARA A ELEIÇÃO MAIS IMPORTANTE DA HISTÓRIA RECENTE`;
+  if (--timer < 0) {
+    timer = duration
+  }
 
-    if (--timer < 0) {
-      timer = duration
-    }
-  }, 1000);
+  return `FALTAM ${days} DIAS, ${hours} HORAS E ${minutes} MINUTOS PARA A ELEIÇÃO MAIS IMPORTANTE DA HISTÓRIA RECENTE`;
 }
 
-window.onload = function () {
+setTimeout(() => {
   let duration = 60 * 120;
 
   document.querySelector(
-    ".md-col-12 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)"
-  ).textContent = new Intl.NumberFormat().format(
-    startTimer(duration, display)
-  );
-}
+    "#block-40267 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)"
+  ).textContent =
+    startTimer(duration)
+}, "1000")
