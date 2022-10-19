@@ -30,14 +30,14 @@ function startTimer(duration) {
     timer = duration
   }
 
-  return `FALTAM ${days} DIAS, ${hours} HORAS E ${minutes} MINUTOS PARA A ELEIÇÃO MAIS IMPORTANTE DA HISTÓRIA RECENTE`;
+  return `FALTAM ${days} DIAS, ${hours} HORAS E ${minutes} MINUTOS`;
 }
 
 setTimeout(() => {
   let duration = 60 * 120;
 
   document.querySelector(
-    "#block-40267 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)"
+    "#block-40267 > div > div > div > div > div > div > div > div:nth-child(3) > span > span:nth-child(1) > strong > span > span > span"
   ).textContent =
     startTimer(duration)
 }, "1000")
